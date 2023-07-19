@@ -1,0 +1,30 @@
+.heading {
+    /* background-color: antiquewhite; */
+    display: flex;
+    justify-content: space-between;
+}
+h1 {
+    /* padding: 1em; */
+    font-size: 3em;
+}
+.scorebox {
+    display: flex;
+}
+.currentscore {
+    background: brown;
+    color: white;
+    margin: 1em;
+    padding: 0.5em;
+    height: 50px;
+    width: 60px;
+    border-radius: 2px;
+}
+.bestscore {
+    background: brown;
+    color: white;
+    margin: 1em 0 1em 0;
+    padding: 0.5em;
+    height: 50px;
+    width: 60px;
+    border-radius: 2px;
+}
