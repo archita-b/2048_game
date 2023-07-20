@@ -6,13 +6,15 @@
 h1 {
     /* padding: 1em; */
     font-size: 3em;
+    color: #4E3636;
 }
 .scorebox {
     display: flex;
 }
 .currentscore {
-    background: brown;
+    background: #D7C0AE;
     color: white;
+    font-weight: bold;
     margin: 1em;
     padding: 0.5em;
     height: 50px;
@@ -20,8 +22,9 @@ h1 {
     border-radius: 2px;
 }
 .bestscore {
-    background: brown;
+    background: #D7C0AE;
     color: white;
+    font-weight: bold;
     margin: 1em 0 1em 0;
     padding: 0.5em;
     height: 50px;

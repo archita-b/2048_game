@@ -4,9 +4,13 @@
     justify-content: space-between;
 }
 .newGameButton {
-    background: brown;
+    background: #4E3636;
     color: white;
+    font-weight: bold;
     padding: 0.5em;
     border: none;
     border-radius: 2px;
+}
+.newGameBox p,a {
+    color: #D7C0AE;
 }

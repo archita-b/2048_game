@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 .gameContainer {
-  max-width: 450px;
+  max-width: 20em;
+  min-height: 20em;
   margin: 20px auto;
 }
