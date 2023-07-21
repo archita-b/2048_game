@@ -1,9 +1,8 @@
 .board {
     background: #BBADA0;
-    max-height: 100vh;
+    height: 30em;
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    /* gap: 0.5em; */
     margin-top: 2.5em;
     border-radius: 5px;
 }
@@ -11,16 +10,19 @@
     display: grid;
     gap: 0.5em;
     margin: 0.5em;
-    grid-auto-rows: 50px;
+    grid-template-rows: repeat(4,1fr);
 }
 .square {
     background: #CDC1B4;
-    padding: 1em;
     display: flex;
     justify-content: center;
+    align-items: center;
     border-radius: 2px;
+    color: #776E65;
+    font-weight: bold;
+    font-size: 3.5em;
     /* transition: transform 0.5s; */
 }
-/* .row:hover .square {
+.square:hover #two {
     transform: translateY(100%);
-} */
+}

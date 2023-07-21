@@ -5,7 +5,7 @@ function Square({ value }) {
   // const [value, setValue] = useState(null);
 
   // function handleKeydown(e) {
-  //   if (e.key == "ArrowUp" || e.key == "ArrowDown") {
+  //   if (e.key == "ArrowDown") {
   //     e.preventDefault();
   //     setValue("2");
   //   }

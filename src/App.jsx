@@ -5,13 +5,11 @@ import { NewGameBox } from "./components/NewGameBox";
 
 export default function App() {
   return (
-    <>
-      <div className="gameContainer">
-        <Header />
-        <NewGameBox />
-        <Board />
-      </div>
+    <div className="gameContainer">
+      <Header />
+      <NewGameBox />
+      <Board />
       <Footer />
-    </>
+    </div>
   );
 }
