@@ -1,0 +1,8 @@
+.howToPlay {
+  margin-top: 500px;
+  width:100%;
+  height: 90px;
+}
+.howToPlay, .howToPlay a {
+    color: #776E65;
+}

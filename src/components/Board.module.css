@@ -1,22 +1,26 @@
 .board {
-    background: #D7C0AE;
+    background: #BBADA0;
+    max-height: 100vh;
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    gap: 0.5em;
+    /* gap: 0.5em; */
     margin-top: 2.5em;
     border-radius: 5px;
 }
 .row {
-    /* background: #A4907C; */
     display: grid;
     gap: 0.5em;
     margin: 0.5em;
+    grid-auto-rows: 50px;
 }
 .square {
-    /* background: #D7C0AE; */
-    /* margin: 0.5em; */ 
+    background: #CDC1B4;
     padding: 1em;
     display: flex;
     justify-content: center;
     border-radius: 2px;
+    /* transition: transform 0.5s; */
 }
+/* .row:hover .square {
+    transform: translateY(100%);
+} */

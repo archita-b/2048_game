@@ -6,11 +6,11 @@ export function Header() {
       <h1>2048</h1>
       <div className={styles.scorebox}>
         <div className={styles.currentscore}>
-          <p>score</p>
+          <p>SCORE</p>
           <p>0</p>
         </div>
         <div className={styles.bestscore}>
-          <p>score</p>
+          <p>BEST</p>
           <p>0</p>
         </div>
       </div>

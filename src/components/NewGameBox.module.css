@@ -1,16 +1,18 @@
 .newGameBox {
-    /* background-color: beige; */
     display: flex;
     justify-content: space-between;
 }
 .newGameButton {
-    background: #4E3636;
+    background: #776E65;
     color: white;
     font-weight: bold;
     padding: 0.5em;
     border: none;
     border-radius: 2px;
 }
-.newGameBox p,a {
-    color: #D7C0AE;
+.newGameBox p, .newGameBox a {
+    color: #776E65;
+}
+.newGameButton {
+    cursor: pointer;
 }

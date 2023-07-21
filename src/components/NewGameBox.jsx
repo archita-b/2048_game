@@ -6,7 +6,7 @@ export function NewGameBox() {
       <p>
         Join the tiles, get to <strong>2048!</strong>
         <br />
-        <a href="" className={styles.howToPlayLink}>
+        <a href="#how-to-play" className={styles.howToPlayLink}>
           <strong>How to play {"\u2192"}</strong>
         </a>
       </p>
