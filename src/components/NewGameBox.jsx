@@ -1,6 +1,7 @@
 import styles from "./NewGameBox.module.css";
 
 export function NewGameBox() {
+  console.log("styles=", styles);
   return (
     <div className={styles.newGameBox}>
       <p>

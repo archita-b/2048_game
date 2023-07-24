@@ -4,7 +4,6 @@
 }
 h1 {
     font-size: 5em;
-    /* font-weight: bold; */
     color: #776E65;
     margin-top: 0.5em;
 }
@@ -18,8 +17,8 @@ h1 {
     font-size: 1em;
     margin: 1em;
     padding: 0.5em;
-    height: 60px;
-    width: 70px;
+    max-height: 60px;
+    min-width: 70px;
     border-radius: 2px;
     display: flex;
     flex-direction: column;
