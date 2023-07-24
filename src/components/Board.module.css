@@ -5,19 +5,15 @@
     grid-template-columns: repeat(4,1fr);
     gap: 1em;
     margin-top: 2.5em;
+    padding: 1em;
     border-radius: 5px;
 }
-/* .container {
-    background: #BBADA0;
-    height: 30em;
-    margin: 0.5em;
-} */
 .square {
     background: #CDC1B4;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 2px;
+    border-radius: 5px;
     color: #776E65;
     font-weight: bold;
     font-size: 3.5em;
