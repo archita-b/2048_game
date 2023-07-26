@@ -23,10 +23,6 @@ export function Board() {
 
   function addNumber(newArray) {
     let populateSquare = false;
-    // let populateBoard = false;
-
-    // while (!populateSquare) {
-    //   if (populateBoard) break;
 
     let random1 = Math.floor(Math.random() * 4);
     let random2 = Math.floor(Math.random() * 4);
@@ -35,7 +31,6 @@ export function Board() {
       newArray[random1][random2] = Math.random() < 0.9 ? 2 : 4;
       populateSquare = true;
     }
-    // }
   }
 
   function handleKeyDown(event) {
@@ -60,22 +55,28 @@ export function Board() {
         break;
     }
 
-    if (moved) addNumber(newBoard);
+    // if (moved) {
+    addNumber(newBoard);
     setBoard(newBoard);
+    // }
 
     function handleArrowDown() {
       for (let col = 0; col < 4; col++) {
         for (let row = 2; row >= 0; row--) {
-          if (newBoard[col][row] !== null) {
-            if (newBoard[col][row + 1] === null) {
-              newBoard[col][row + 1] = newBoard[col][row];
-              newBoard[col][row] = null;
+          let currentRow = row;
+          while (currentRow < 3 && newBoard[col][currentRow] !== null) {
+            if (newBoard[col][currentRow + 1] === null) {
+              newBoard[col][currentRow + 1] = newBoard[col][currentRow];
+              newBoard[col][currentRow] = null;
+              currentRow++;
               moved = true;
-            } else if (newBoard[col][row + 1] === newBoard[col][row]) {
-              newBoard[col][row + 1] *= 2;
-              newBoard[col][row] = null;
+            } else if (
+              newBoard[col][currentRow + 1] === newBoard[col][currentRow]
+            ) {
+              newBoard[col][currentRow + 1] *= 2;
+              newBoard[col][currentRow] = null;
               moved = true;
-            }
+            } else break;
           }
         }
       }
@@ -84,16 +85,20 @@ export function Board() {
     function handleArrowUp() {
       for (let col = 0; col < 4; col++) {
         for (let row = 1; row < 4; row++) {
-          if (newBoard[col][row] !== null) {
-            if (newBoard[col][row - 1] === null) {
-              newBoard[col][row - 1] = newBoard[col][row];
-              newBoard[col][row] = null;
+          let currentRow = row;
+          while (currentRow > 0 && newBoard[col][currentRow] !== null) {
+            if (newBoard[col][currentRow - 1] === null) {
+              newBoard[col][currentRow - 1] = newBoard[col][currentRow];
+              newBoard[col][currentRow] = null;
+              currentRow--;
               moved = true;
-            } else if (newBoard[col][row - 1] === newBoard[col][row]) {
-              newBoard[col][row - 1] *= 2;
-              newBoard[col][row] = null;
+            } else if (
+              newBoard[col][currentRow - 1] === newBoard[col][currentRow]
+            ) {
+              newBoard[col][currentRow - 1] *= 2;
+              newBoard[col][currentRow] = null;
               moved = true;
-            }
+            } else break;
           }
         }
       }
@@ -102,16 +107,20 @@ export function Board() {
     function handleArrowLeft() {
       for (let col = 1; col < 4; col++) {
         for (let row = 0; row < 4; row++) {
-          if (newBoard[col][row] !== null) {
-            if (newBoard[col - 1][row] === null) {
-              newBoard[col - 1][row] = newBoard[col][row];
-              newBoard[col][row] = null;
+          let currentCol = col;
+          while (currentCol > 0 && newBoard[currentCol][row] !== null) {
+            if (newBoard[currentCol - 1][row] === null) {
+              newBoard[currentCol - 1][row] = newBoard[currentCol][row];
+              newBoard[currentCol][row] = null;
+              currentCol--;
               moved = true;
-            } else if (newBoard[col - 1][row] === newBoard[col][row]) {
-              newBoard[col - 1][row] *= 2;
-              newBoard[col][row] = null;
+            } else if (
+              newBoard[currentCol - 1][row] === newBoard[currentCol][row]
+            ) {
+              newBoard[currentCol - 1][row] *= 2;
+              newBoard[currentCol][row] = null;
               moved = true;
-            }
+            } else break;
           }
         }
       }
@@ -120,16 +129,20 @@ export function Board() {
     function handleArrowRight() {
       for (let col = 2; col >= 0; col--) {
         for (let row = 0; row < 4; row++) {
-          if (newBoard[col][row] !== null) {
-            if (newBoard[col + 1][row] === null) {
-              newBoard[col + 1][row] = newBoard[col][row];
-              newBoard[col][row] = null;
+          let currentCol = col;
+          while (currentCol < 3 && newBoard[currentCol][row] !== null) {
+            if (newBoard[currentCol + 1][row] === null) {
+              newBoard[currentCol + 1][row] = newBoard[currentCol][row];
+              newBoard[currentCol][row] = null;
+              currentCol++;
               moved = true;
-            } else if (newBoard[col + 1][row] === newBoard[col][row]) {
-              newBoard[col + 1][row] *= 2;
-              newBoard[col][row] = null;
+            } else if (
+              newBoard[currentCol + 1][row] === newBoard[currentCol][row]
+            ) {
+              newBoard[currentCol + 1][row] *= 2;
+              newBoard[currentCol][row] = null;
               moved = true;
-            }
+            } else break;
           }
         }
       }
