@@ -23,19 +23,19 @@ export function Board() {
 
   function addNumber(newArray) {
     let populateSquare = false;
-    let populateBoard = false;
+    // let populateBoard = false;
 
-    while (!populateSquare) {
-      if (populateBoard) break;
+    // while (!populateSquare) {
+    //   if (populateBoard) break;
 
-      let random1 = Math.floor(Math.random() * 4);
-      let random2 = Math.floor(Math.random() * 4);
+    let random1 = Math.floor(Math.random() * 4);
+    let random2 = Math.floor(Math.random() * 4);
 
-      if (newArray[random1][random2] === null) {
-        newArray[random1][random2] = Math.random() < 0.9 ? 2 : 4;
-        populateSquare = true;
-      }
+    if (newArray[random1][random2] === null) {
+      newArray[random1][random2] = Math.random() < 0.9 ? 2 : 4;
+      populateSquare = true;
     }
+    // }
   }
 
   function handleKeyDown(event) {
@@ -56,66 +56,80 @@ export function Board() {
       case "ArrowRight":
         handleArrowRight();
         break;
+      default:
+        break;
     }
 
     if (moved) addNumber(newBoard);
     setBoard(newBoard);
 
     function handleArrowDown() {
-      for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
-          if (newBoard[i][j + 1] === null) {
-            newBoard[i][j + 1] = newBoard[i][j];
-            newBoard[i][j] = null;
-            moved = true;
-          } else if (newBoard[i][j + 1] === newBoard[i][j]) {
-            newBoard[i][j + 1] = newBoard[i][j] * 2;
-            moved = true;
+      for (let col = 0; col < 4; col++) {
+        for (let row = 2; row >= 0; row--) {
+          if (newBoard[col][row] !== null) {
+            if (newBoard[col][row + 1] === null) {
+              newBoard[col][row + 1] = newBoard[col][row];
+              newBoard[col][row] = null;
+              moved = true;
+            } else if (newBoard[col][row + 1] === newBoard[col][row]) {
+              newBoard[col][row + 1] *= 2;
+              newBoard[col][row] = null;
+              moved = true;
+            }
           }
         }
       }
     }
 
     function handleArrowUp() {
-      for (let i = 0; i < 4; i++) {
-        for (let j = 3; j >= 0; j--) {
-          if (newBoard[i][j - 1] === null) {
-            newBoard[i][j - 1] = newBoard[i][j];
-            newBoard[i][j] = null;
-            moved = true;
-          } else if (newBoard[i][j - 1] === newBoard[i][j]) {
-            newBoard[i][j - 1] = newBoard[i][j] * 2;
-            moved = true;
+      for (let col = 0; col < 4; col++) {
+        for (let row = 1; row < 4; row++) {
+          if (newBoard[col][row] !== null) {
+            if (newBoard[col][row - 1] === null) {
+              newBoard[col][row - 1] = newBoard[col][row];
+              newBoard[col][row] = null;
+              moved = true;
+            } else if (newBoard[col][row - 1] === newBoard[col][row]) {
+              newBoard[col][row - 1] *= 2;
+              newBoard[col][row] = null;
+              moved = true;
+            }
           }
         }
       }
     }
 
     function handleArrowLeft() {
-      for (let i = 3; i > 0; i--) {
-        for (let j = 0; j < 4; j++) {
-          if (newBoard[i - 1][j] === null) {
-            newBoard[i - 1][j] = newBoard[i][j];
-            newBoard[i][j] = null;
-            moved = true;
-          } else if (newBoard[i - 1][j] === newBoard[i][j]) {
-            newBoard[i - 1][j] = newBoard[i][j] * 2;
-            moved = true;
+      for (let col = 1; col < 4; col++) {
+        for (let row = 0; row < 4; row++) {
+          if (newBoard[col][row] !== null) {
+            if (newBoard[col - 1][row] === null) {
+              newBoard[col - 1][row] = newBoard[col][row];
+              newBoard[col][row] = null;
+              moved = true;
+            } else if (newBoard[col - 1][row] === newBoard[col][row]) {
+              newBoard[col - 1][row] *= 2;
+              newBoard[col][row] = null;
+              moved = true;
+            }
           }
         }
       }
     }
 
     function handleArrowRight() {
-      for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 4; j++) {
-          if (newBoard[i + 1][j] === null) {
-            newBoard[i + 1][j] = newBoard[i][j];
-            newBoard[i][j] = null;
-            moved = true;
-          } else if (newBoard[i + 1][j] === newBoard[i][j]) {
-            newBoard[i + 1][j] = newBoard[i][j] * 2;
-            moved = true;
+      for (let col = 2; col >= 0; col--) {
+        for (let row = 0; row < 4; row++) {
+          if (newBoard[col][row] !== null) {
+            if (newBoard[col + 1][row] === null) {
+              newBoard[col + 1][row] = newBoard[col][row];
+              newBoard[col][row] = null;
+              moved = true;
+            } else if (newBoard[col + 1][row] === newBoard[col][row]) {
+              newBoard[col + 1][row] *= 2;
+              newBoard[col][row] = null;
+              moved = true;
+            }
           }
         }
       }
