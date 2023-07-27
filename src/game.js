@@ -37,25 +37,25 @@ export function handleKeyDown(event, board, setBoard) {
 
   switch (event.key) {
     case "ArrowDown":
-      handleArrowDown(newBoard);
+      moveDown(newBoard);
       setBoard(newBoard);
       break;
     case "ArrowUp":
-      handleArrowUp(newBoard);
+      moveUp(newBoard);
       setBoard(newBoard);
       break;
     case "ArrowLeft":
-      handleArrowLeft(newBoard);
+      moveLeft(newBoard);
       setBoard(newBoard);
       break;
     case "ArrowRight":
-      handleArrowRight(newBoard);
+      moveRight(newBoard);
       setBoard(newBoard);
       break;
   }
 }
 
-export function handleArrowDown(board) {
+export function moveDown(board) {
   const oldBoard = JSON.parse(JSON.stringify(board));
 
   for (let col = 0; col < 4; col++) {
@@ -79,7 +79,7 @@ export function handleArrowDown(board) {
   return board;
 }
 
-export function handleArrowUp(board) {
+export function moveUp(board) {
   const oldBoard = JSON.parse(JSON.stringify(board));
 
   for (let col = 0; col < 4; col++) {
@@ -103,7 +103,7 @@ export function handleArrowUp(board) {
   return board;
 }
 
-export function handleArrowLeft(board) {
+export function moveLeft(board) {
   const oldBoard = JSON.parse(JSON.stringify(board));
 
   for (let col = 1; col < 4; col++) {
@@ -127,7 +127,7 @@ export function handleArrowLeft(board) {
   return board;
 }
 
-export function handleArrowRight(board) {
+export function moveRight(board) {
   const oldBoard = JSON.parse(JSON.stringify(board));
 
   for (let col = 2; col >= 0; col--) {

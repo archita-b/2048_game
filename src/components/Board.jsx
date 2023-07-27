@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import styles from "./Board.module.css";
 import {
   getEmptyBoard,
-  handleArrowDown,
-  handleArrowLeft,
-  handleArrowRight,
-  handleArrowUp,
+  moveDown,
+  moveLeft,
+  moveRight,
+  moveUp,
   handleKeyDown,
   init,
 } from "../game.js";
