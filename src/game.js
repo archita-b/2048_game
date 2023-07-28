@@ -38,24 +38,24 @@ export function handleKeyDown(event, board, setBoard) {
   switch (event.key) {
     case "ArrowDown":
       moveDown(newBoard);
-      setBoard(newBoard);
       break;
     case "ArrowUp":
       moveUp(newBoard);
-      setBoard(newBoard);
       break;
     case "ArrowLeft":
       moveLeft(newBoard);
-      setBoard(newBoard);
       break;
     case "ArrowRight":
       moveRight(newBoard);
-      setBoard(newBoard);
       break;
   }
+  setBoard(newBoard);
+  // if (isGameOver(newBoard)) {
+  //   alert("Game over!!!");
+  // }
 }
 
-export function moveDown(board) {
+function moveDown(board) {
   const oldBoard = JSON.parse(JSON.stringify(board));
 
   for (let col = 0; col < 4; col++) {
@@ -79,7 +79,7 @@ export function moveDown(board) {
   return board;
 }
 
-export function moveUp(board) {
+function moveUp(board) {
   const oldBoard = JSON.parse(JSON.stringify(board));
 
   for (let col = 0; col < 4; col++) {
@@ -103,7 +103,7 @@ export function moveUp(board) {
   return board;
 }
 
-export function moveLeft(board) {
+function moveLeft(board) {
   const oldBoard = JSON.parse(JSON.stringify(board));
 
   for (let col = 1; col < 4; col++) {
@@ -127,7 +127,7 @@ export function moveLeft(board) {
   return board;
 }
 
-export function moveRight(board) {
+function moveRight(board) {
   const oldBoard = JSON.parse(JSON.stringify(board));
 
   for (let col = 2; col >= 0; col--) {
@@ -149,4 +149,20 @@ export function moveRight(board) {
     addNumber(board);
   }
   return board;
+}
+
+function isGameOver(board) {
+  if (JSON.stringify(board) !== JSON.stringify(moveDown(board))) {
+    return false;
+  }
+  if (JSON.stringify(board) !== JSON.stringify(moveUp(board))) {
+    return false;
+  }
+  if (JSON.stringify(board) !== JSON.stringify(moveLeft(board))) {
+    return false;
+  }
+  if (JSON.stringify(board) !== JSON.stringify(moveRight(board))) {
+    return false;
+  }
+  return true;
 }

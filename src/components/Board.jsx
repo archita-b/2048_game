@@ -1,14 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Board.module.css";
-import {
-  getEmptyBoard,
-  moveDown,
-  moveLeft,
-  moveRight,
-  moveUp,
-  handleKeyDown,
-  init,
-} from "../game.js";
+import { getEmptyBoard, handleKeyDown, init } from "../game.js";
 
 export function Board() {
   const [board, setBoard] = useState(() => getEmptyBoard());
