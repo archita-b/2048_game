@@ -1,24 +1,21 @@
-export function getEmptyBoard() {
-  return [
+export function getInitialBoard() {
+  const initialBoard = [
     [null, null, null, null],
     [null, null, null, null],
     [null, null, null, null],
     [null, null, null, null],
   ];
-}
-
-export function init(board) {
-  addNumber(board);
-  addNumber(board);
-  return board;
+  addNumber(initialBoard);
+  addNumber(initialBoard);
+  return initialBoard;
 }
 
 function addNumber(board) {
   let added = false;
-  let boardFull = false;
+  let gameOver = isGameOver(board);
 
   while (!added) {
-    if (boardFull) break;
+    if (gameOver) break;
 
     let random1 = Math.round(Math.random() * 3);
     let random2 = Math.round(Math.random() * 3);
@@ -30,34 +27,29 @@ function addNumber(board) {
   }
 }
 
-export function handleKeyDown(event, board, setBoard) {
+export function handleArrowKey(event, board, setBoard) {
   event.preventDefault();
 
   const newBoard = [...board];
 
   switch (event.key) {
     case "ArrowDown":
-      moveDown(newBoard);
+      moveDown(newBoard, true);
       break;
     case "ArrowUp":
-      moveUp(newBoard);
+      moveUp(newBoard, true);
       break;
     case "ArrowLeft":
-      moveLeft(newBoard);
+      moveLeft(newBoard, true);
       break;
     case "ArrowRight":
-      moveRight(newBoard);
+      moveRight(newBoard, true);
       break;
   }
   setBoard(newBoard);
-  // if (isGameOver(newBoard)) {
-  //   alert("Game over!!!");
-  // }
 }
 
-function moveDown(board) {
-  const oldBoard = JSON.parse(JSON.stringify(board));
-
+function moveDown(board, moved) {
   for (let col = 0; col < 4; col++) {
     for (let row = 2; row >= 0; row--) {
       let currentRow = row;
@@ -73,15 +65,15 @@ function moveDown(board) {
       }
     }
   }
-  if (JSON.stringify(oldBoard) !== JSON.stringify(board)) {
+
+  if (moved) {
     addNumber(board);
+    // return board;
   }
   return board;
 }
 
-function moveUp(board) {
-  const oldBoard = JSON.parse(JSON.stringify(board));
-
+function moveUp(board, moved) {
   for (let col = 0; col < 4; col++) {
     for (let row = 1; row < 4; row++) {
       let currentRow = row;
@@ -97,15 +89,15 @@ function moveUp(board) {
       }
     }
   }
-  if (JSON.stringify(oldBoard) !== JSON.stringify(board)) {
+
+  if (moved) {
     addNumber(board);
+    // return board;
   }
   return board;
 }
 
-function moveLeft(board) {
-  const oldBoard = JSON.parse(JSON.stringify(board));
-
+function moveLeft(board, moved) {
   for (let col = 1; col < 4; col++) {
     for (let row = 0; row < 4; row++) {
       let currentCol = col;
@@ -121,15 +113,15 @@ function moveLeft(board) {
       }
     }
   }
-  if (JSON.stringify(oldBoard) !== JSON.stringify(board)) {
+
+  if (moved) {
     addNumber(board);
+    // return board;
   }
   return board;
 }
 
-function moveRight(board) {
-  const oldBoard = JSON.parse(JSON.stringify(board));
-
+function moveRight(board, moved) {
   for (let col = 2; col >= 0; col--) {
     for (let row = 0; row < 4; row++) {
       let currentCol = col;
@@ -145,13 +137,23 @@ function moveRight(board) {
       }
     }
   }
-  if (JSON.stringify(oldBoard) !== JSON.stringify(board)) {
+
+  if (moved) {
     addNumber(board);
+    // return board;
   }
   return board;
 }
 
-function isGameOver(board) {
+export function isGameOver(board) {
+  for (let col = 0; col < 4; col++) {
+    for (let row = 0; row < 4; row++) {
+      if (board[col][row] === null) {
+        return false;
+      }
+    }
+  }
+
   if (JSON.stringify(board) !== JSON.stringify(moveDown(board))) {
     return false;
   }

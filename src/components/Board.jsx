@@ -1,16 +1,25 @@
 import { useEffect, useState } from "react";
 import styles from "./Board.module.css";
-import { getEmptyBoard, handleKeyDown, init } from "../game.js";
+import { getInitialBoard, handleArrowKey, isGameOver } from "../game.js";
 
 export function Board() {
-  const [board, setBoard] = useState(() => getEmptyBoard());
+  const [board, setBoard] = useState(() => {
+    const storedBoard = localStorage.getItem("Board");
+    return storedBoard === null ? getInitialBoard() : JSON.parse(storedBoard);
+  });
+
+  useEffect(() => {
+    localStorage.setItem("Board", JSON.stringify(board));
+    if (isGameOver(board)) {
+      alert("Game over!!!");
+    }
+  }, [board]);
 
   useEffect(() => {
     const newBoard = [...board];
-    init(newBoard);
     setBoard(newBoard);
     document.addEventListener("keydown", (event) => {
-      handleKeyDown(event, board, setBoard);
+      handleArrowKey(event, board, setBoard);
     });
   }, []);
 
