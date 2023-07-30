@@ -1,6 +1,10 @@
+// import { getInitialBoard } from "../game.js";
 import styles from "./NewGameBox.module.css";
 
 export function NewGameBox() {
+  // function handleClick() {
+  //   getInitialBoard();
+  // }
   return (
     <div className={styles.newGameBox}>
       <p>

@@ -34,22 +34,23 @@ export function handleArrowKey(event, board, setBoard) {
 
   switch (event.key) {
     case "ArrowDown":
-      moveDown(newBoard, true);
+      moveDown(newBoard);
       break;
     case "ArrowUp":
-      moveUp(newBoard, true);
+      moveUp(newBoard);
       break;
     case "ArrowLeft":
-      moveLeft(newBoard, true);
+      moveLeft(newBoard);
       break;
     case "ArrowRight":
-      moveRight(newBoard, true);
+      moveRight(newBoard);
       break;
   }
   setBoard(newBoard);
 }
 
-function moveDown(board, moved) {
+function moveDown(board) {
+  let moved = false;
   for (let col = 0; col < 4; col++) {
     for (let row = 2; row >= 0; row--) {
       let currentRow = row;
@@ -58,9 +59,11 @@ function moveDown(board, moved) {
           board[col][currentRow + 1] = board[col][currentRow];
           board[col][currentRow] = null;
           currentRow++;
+          moved = true;
         } else if (board[col][currentRow + 1] === board[col][currentRow]) {
           board[col][currentRow + 1] *= 2;
           board[col][currentRow] = null;
+          moved = true;
         } else break;
       }
     }
@@ -68,12 +71,13 @@ function moveDown(board, moved) {
 
   if (moved) {
     addNumber(board);
-    // return board;
   }
-  return board;
+  return moved;
 }
 
-function moveUp(board, moved) {
+function moveUp(board) {
+  let moved = false;
+
   for (let col = 0; col < 4; col++) {
     for (let row = 1; row < 4; row++) {
       let currentRow = row;
@@ -82,9 +86,11 @@ function moveUp(board, moved) {
           board[col][currentRow - 1] = board[col][currentRow];
           board[col][currentRow] = null;
           currentRow--;
+          moved = true;
         } else if (board[col][currentRow - 1] === board[col][currentRow]) {
           board[col][currentRow - 1] *= 2;
           board[col][currentRow] = null;
+          moved = true;
         } else break;
       }
     }
@@ -92,12 +98,13 @@ function moveUp(board, moved) {
 
   if (moved) {
     addNumber(board);
-    // return board;
   }
-  return board;
+  return moved;
 }
 
-function moveLeft(board, moved) {
+function moveLeft(board) {
+  let moved = false;
+
   for (let col = 1; col < 4; col++) {
     for (let row = 0; row < 4; row++) {
       let currentCol = col;
@@ -106,9 +113,11 @@ function moveLeft(board, moved) {
           board[currentCol - 1][row] = board[currentCol][row];
           board[currentCol][row] = null;
           currentCol--;
+          moved = true;
         } else if (board[currentCol - 1][row] === board[currentCol][row]) {
           board[currentCol - 1][row] *= 2;
           board[currentCol][row] = null;
+          moved = true;
         } else break;
       }
     }
@@ -116,12 +125,13 @@ function moveLeft(board, moved) {
 
   if (moved) {
     addNumber(board);
-    // return board;
   }
-  return board;
+  return moved;
 }
 
-function moveRight(board, moved) {
+function moveRight(board) {
+  let moved = false;
+
   for (let col = 2; col >= 0; col--) {
     for (let row = 0; row < 4; row++) {
       let currentCol = col;
@@ -130,9 +140,11 @@ function moveRight(board, moved) {
           board[currentCol + 1][row] = board[currentCol][row];
           board[currentCol][row] = null;
           currentCol++;
+          moved = true;
         } else if (board[currentCol + 1][row] === board[currentCol][row]) {
           board[currentCol + 1][row] *= 2;
           board[currentCol][row] = null;
+          moved = true;
         } else break;
       }
     }
@@ -140,9 +152,8 @@ function moveRight(board, moved) {
 
   if (moved) {
     addNumber(board);
-    // return board;
   }
-  return board;
+  return moved;
 }
 
 export function isGameOver(board) {
@@ -154,17 +165,10 @@ export function isGameOver(board) {
     }
   }
 
-  if (JSON.stringify(board) !== JSON.stringify(moveDown(board))) {
-    return false;
-  }
-  if (JSON.stringify(board) !== JSON.stringify(moveUp(board))) {
-    return false;
-  }
-  if (JSON.stringify(board) !== JSON.stringify(moveLeft(board))) {
-    return false;
-  }
-  if (JSON.stringify(board) !== JSON.stringify(moveRight(board))) {
-    return false;
-  }
+  if (moveDown(board) === true) return false;
+  if (moveUp(board) === true) return false;
+  if (moveLeft(board) === true) return false;
+  if (moveRight(board) === true) return false;
+
   return true;
 }
