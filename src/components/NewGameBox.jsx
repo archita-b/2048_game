@@ -1,10 +1,6 @@
-// import { getInitialBoard } from "../game.js";
 import styles from "./NewGameBox.module.css";
 
-export function NewGameBox() {
-  // function handleClick() {
-  //   getInitialBoard();
-  // }
+export function NewGameBox({ resetBoard }) {
   return (
     <div className={styles.newGameBox}>
       <p>
@@ -14,7 +10,9 @@ export function NewGameBox() {
           <strong>How to play {"\u2192"}</strong>
         </a>
       </p>
-      <button className={styles.newGameButton}>New Game</button>
+      <button onClick={() => resetBoard()} className={styles.newGameButton}>
+        New Game
+      </button>
     </div>
   );
 }
